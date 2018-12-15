@@ -12,3 +12,11 @@
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+### Files details
+1. models
+	- train_classifier is getting the data from the database and train a multioutput random forest with a gridsearch for min_sample_split
+    - classiifer.pkl is the saved model
+    
+2. data
+	- process_data.py takes the data from teh csv files disaster_categories.cav and disaster_messages.csv, cleans the data and store it in 
