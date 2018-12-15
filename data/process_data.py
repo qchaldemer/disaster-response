@@ -52,7 +52,7 @@ def save_data(df, database_filename):
     '''
     save data to sqlite database
     '''
-    engine = create_engine('sqlite:///'+ database_filepath)
+    engine = create_engine('sqlite:///'+ database_filename)
     df.to_sql(database_filename, engine, index=False)  
 
 
