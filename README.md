@@ -15,8 +15,11 @@
 
 ### Files details
 1. models
-	- train_classifier is getting the data from the database and train a multioutput random forest with a gridsearch for min_sample_split
+	- train_classifier is a pipeline that gets the data from the database and trains a multioutput random forest with a gridsearch for min_sample_split
     - classiifer.pkl is the saved model
     
 2. data
 	- process_data.py takes the data from teh csv files disaster_categories.cav and disaster_messages.csv, cleans the data and store it in 
+    
+3. app
+	- run.py is using Flask and Plotly to display a webpage where we can enter messages and get their category using the ML model trained previously
