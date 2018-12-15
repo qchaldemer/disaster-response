@@ -23,6 +23,10 @@ from joblib import dump, load
 
 
 def load_data(database_filepath):
+    ''' 
+    load data to databse
+    return X, y, category_names
+    '''
     engine = create_engine('sqlite:///'+ database_filepath)
     df = pd.read_sql_table('DisasterResponse.db', engine)
     X = df.iloc[:,1]
@@ -32,6 +36,11 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    tokenize text
+    input: text
+    return: tokens
+    '''
     # case normalization
     text = text.lower()
     
@@ -51,6 +60,10 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    build pipeline with random forest and gridsearch
+    return: model
+    '''
     #pipeline
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -71,6 +84,9 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    evaluate model to get F1 score, accuracy, recall
+    '''
     # predict
     y_pred = model.predict(X_test)
     
@@ -85,6 +101,9 @@ def save_model(model, model_filepath):
 
 
 def main():
+    '''
+    train and save the model
+    '''
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
